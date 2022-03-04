@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Universal selector */
+        /* *{
+            color: aqua;
+        } */
+
+        /* class selector */
+        .container{
+            /* property */
+            color: tomato;
+        }
+
+        /* id selector */
+        /* id is applied to one tag only i.e. it is unique */
+        #onh3{
+            background-color: turquoise;
+        }
+        .containerTwo{
+            font-size: x-large;
+        }
+
+        .one, .two, .three, #onh3, div{
+            background-color: antiquewhite;
+            color: tomato;
+            font-size: larger;
+        }
+
+        /* Select tag with multiple class */
+        .class1.class2{
+            font-size: x-large;
+            color: green;
+            background-color: gainsboro;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>I'm h1 heading</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel eius nobis sapiente necessitatibus architecto reprehenderit et earum illo exercitationem veniam voluptatibus mollitia suscipit magni laboriosam, ipsam dolor quos corrupti sint!</p>
+    
+    <div class="container">
+        <h2>I'm h2 heading inside div</h2>
+        <p>I'm a paragraph inside div</p>
+    </div>
+
+    <div>
+        <h3>heading h3 inside div</h3>
+    </div>
+
+    <a class="containerTwo" href="">Go to pepcoding</a>
+    <h3 id="onh3">I'm h3 heading</h3>
+    <p class="container containerTwo">I'm paragraph with containerTwo class</p>
+
+    <h1>Grouping</h1>
+    <a class="one" href="">Link</a>
+    <h5 class="two">I'm h5 heading</h5>
+    <p class="three">I'm para</p>
+
+    <p class="class1 class2">I'm para with class1 & class2 on me</p>
+
+</body>
+</html>

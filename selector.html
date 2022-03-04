@@ -12,21 +12,23 @@
         } */
 
         /* class selector */
-        .container{
+        .class_container{
             /* property */
-            color: tomato;
+            color: purple;
         }
 
         /* id selector */
         /* id is applied to one tag only i.e. it is unique */
-        #onh3{
+        #id_h3{
             background-color: turquoise;
         }
-        .containerTwo{
+        
+        .class_container2{
             font-size: x-large;
         }
 
-        .one, .two, .three, #onh3, div{
+        /* , --> give defined properties to all , separated elements */
+        .c1, .c2, .c3, #id_h3, div{
             background-color: antiquewhite;
             color: tomato;
             font-size: larger;
@@ -45,24 +47,33 @@
     <h1>I'm h1 heading</h1>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel eius nobis sapiente necessitatibus architecto reprehenderit et earum illo exercitationem veniam voluptatibus mollitia suscipit magni laboriosam, ipsam dolor quos corrupti sint!</p>
     
-    <div class="container">
+    <!-- class_container properties applied to child tags as well as takes the properties from , separated div  -->
+    <div class="class_container">
         <h2>I'm h2 heading inside div</h2>
         <p>I'm a paragraph inside div</p>
     </div>
 
+    <!-- gets properties with , separeted div tag in style -->
     <div>
         <h3>heading h3 inside div</h3>
     </div>
 
-    <a class="containerTwo" href="">Go to pepcoding</a>
-    <h3 id="onh3">I'm h3 heading</h3>
-    <p class="container containerTwo">I'm paragraph with containerTwo class</p>
+    <!-- only class_container2 properties taken -->
+    <a class="class_container2" href="">Go to pepcoding</a>
 
+    <!-- takes properties using id selector -->
+    <h3 id="id_h3">I'm h3 heading</h3>
+
+    <!-- takes both class_container & class_container2 properties -->
+    <p class="class_container class_container2">I'm paragraph with class_container2 class</p>
+
+    <!-- c1, c2, c3 get same properties using grouping -->
     <h1>Grouping</h1>
-    <a class="one" href="">Link</a>
-    <h5 class="two">I'm h5 heading</h5>
-    <p class="three">I'm para</p>
+    <a class="c1" href="">Link</a>
+    <h5 class="c2">I'm h5 heading</h5>
+    <p class="c3">I'm para</p>
 
+    <!-- gives properties only when both class1 & class2 are selected -->
     <p class="class1 class2">I'm para with class1 & class2 on me</p>
 
 </body>

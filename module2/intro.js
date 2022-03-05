@@ -33,7 +33,6 @@ let n = 151;
 let flage = true;
 
 for(let i=2;i*i<=n;i++){
-    console.log(i);
     if(n%i==0){
         flage = false;
         break;

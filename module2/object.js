@@ -42,3 +42,5 @@ capAmerica.address.state = 'New York';
 /* Second method to access a key */
 console.log(capAmerica.Name); // by default after dot it consider it to be string i.e. means it's a key & then went for search
 console.log(capAmerica['Name']); // but here we have to define it inside ' ' to tell that it's not a variable but a key like: console.log(capAmerica[Name]); gives error
+
+console.log(capAmerica['address']['city']);

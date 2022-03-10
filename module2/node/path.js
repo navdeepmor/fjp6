@@ -6,8 +6,15 @@ console.log(path);
 let extensionName = path.extname("C:\Users\navde\OneDrive\Desktop\FJP6\module1\index.html");
 console.log(extensionName);
 
-let baseName = path.basename("C:\Users\navde\OneDrive\Desktop\FJP6\module2\node\childProcess.js");
+// let baseName = path.basename("C:\Users\navde\OneDrive\Desktop\FJP6\module2\node\childProcess.js");
+// console.log(baseName);
+let baseName = path.basename(__filename);
 console.log(baseName);
 
-console.log(__dirname);
+//console.log(__dirname);
 console.log(__filename);
+
+let dirPath = __dirname;
+
+let newFilePath = path.join(dirPath, "test.js");
+console.log(newFilePath);

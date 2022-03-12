@@ -1,0 +1,9 @@
+*{
+    margin: 0;
+    padding: 0; /* with this by default margin/padding would be 0 for all elements unless we override them below*/
+    font-family: 'poppins', sans-serif; /* Poppins - Google Fonts  */
+    box-sizing: border-box; /* let suppose we gave element a width now whenever we increase it's padding/margin then it's width with change that means it's not taking our given width. Why it's changing? it's changing because actual width of any element also includes margin. If we required to apply the width given we use it. Since we have specified it in universal selector i.e. *{} we need width calc to be right for all our element. */
+}
+
+
+

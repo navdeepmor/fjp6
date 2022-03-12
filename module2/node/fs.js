@@ -18,3 +18,26 @@ fs.appendFileSync(filePath, " This is new content added"); // appdends new conte
 
 // D-delete
 fs.unlinkSync(filePath);
+
+/* ---------------------------------------------------------------- */
+
+// //create dir
+// if(!fs.existsSync("ourDirectory")) // checking if dir exists 
+//     fs.mkdirSync("ourDirectory"); // gives error if dir already exits
+
+// // read dir
+// let folderPath = "C:\\Users\\navde\\OneDrive\\Desktop\\FJP6\\module2";
+
+// let contentOfFolder = fs.readdirSync(folderPath);
+// console.log(contentOfFolder);
+
+// delete dir
+//fs.rmdirSync(folderPath); // deletes only non-empty error
+
+// copy a file
+let sourcePath = path.join(__dirname,"file.txt");
+let destinationPath = path.join(__dirname,"module","file.tx"); 
+console.log(sourcePath);
+console.log(destinationPath);
+
+//fs.copyFileSync(sourcePath,destinationPath);

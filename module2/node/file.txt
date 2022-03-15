@@ -1,2 +1,0 @@
-I am text inside this file.
-You now on second line.

@@ -21,23 +21,24 @@ fs.unlinkSync(filePath);
 
 /* ---------------------------------------------------------------- */
 
-// //create dir
-// if(!fs.existsSync("ourDirectory")) // checking if dir exists 
-//     fs.mkdirSync("ourDirectory"); // gives error if dir already exits
+//create dir
+if(!fs.existsSync("ourDirectory")) // checking if dir exists 
+    fs.mkdirSync("ourDirectory"); // gives error if dir already exits
 
-// // read dir
-// let folderPath = "C:\\Users\\navde\\OneDrive\\Desktop\\FJP6\\module2";
+// read dir
+let folderPath = "C:\\Users\\navde\\OneDrive\\Desktop\\FJP6\\module2";
 
-// let contentOfFolder = fs.readdirSync(folderPath);
-// console.log(contentOfFolder);
+let contentOfFolder = fs.readdirSync(folderPath);
+console.log(contentOfFolder);
 
 // delete dir
-//fs.rmdirSync(folderPath); // deletes only non-empty error
+fs.rmdirSync("ourDirectory"); // deletes only non-empty dir
+fs.rmdirSync("ourDirectory", {recursive: true}); // deletes only empty dir
 
 // copy a file
-let sourcePath = path.join(__dirname,"file.txt");
-let destinationPath = path.join(__dirname,"module","file.tx"); 
+let sourcePath = path.join(__dirname,"text.txt");
+let destinationPath = path.join(__dirname,"ourDirectory","text.txt"); 
 console.log(sourcePath);
 console.log(destinationPath);
 
-//fs.copyFileSync(sourcePath,destinationPath);
+fs.copyFileSync(sourcePath,destinationPath);

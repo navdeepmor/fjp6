@@ -15,36 +15,60 @@ img{
 }
 
 .flex-div{
-    display: flex; 
+    display: flex; /* align the elements inside it horizontally */ 
     align-items: center;
 }
-
 nav{
     padding: 10px 2%; /* top & bottom --> 10px, right & left --> 2%  */
     justify-content: space-between; /* give spacing between child tag inside nav */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     background: #fff;
-    position: static; /* so that it will not move */
+    position: sticky; /* so side navbar doesn't cover it */
     top: 0; /* whenever we give position we add this so that it will be at top only */
-    z-index: 10px;
+    z-index: 10;
 }
-
 .nav-right img{
     width: 25px;
     margin-right: 25px;
 }
-
 .nav-right .user-icon{
     width: 35px;
     border-radius: 50%;
     margin-right: 0;
 }
-
 .nav-left .menu-icon{
     width: 22px;
     margin-right: 25px;
 }
-
 .nav-left .logo{
     width: 130px;
+}
+.nav-middle .mic-icon{
+    width: 16px; 
+}
+.nav-middle .search-box{
+    border: 1px solid #ccc; /* this gives border to search box */
+    margin-right: 15px; /* to move or keep away voice search icon on right side */
+    padding: 8px 12px;
+    border-radius: 25px; /* edges of border across search would be rounded with this  */
+}
+.nav-middle .search-box input{
+    width: 400px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+}
+.nav-middle .search-box img{
+    width: 15px; /* this is to reduce the size of search logo */
+}
+
+/* ------------sidebar------------ */
+.sidebar{
+    background: #fff; /* white */
+    width: 15%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    padding-left: 2%;
+    padding-top: 80px;
 }

@@ -30,6 +30,11 @@
             width: 40%;
             background-color: red;
         }
+        span{
+            border: 2px solid blue;
+            height: 2vh; /* it doesn't effect the height as span is inline */
+            width: 2vw; /* it doesn't effect the width as span is inline */
+        }
     </style>
 </head>
 <body>
@@ -61,5 +66,17 @@
     <div class="vh-vw">
         <div class="child"></div>
     </div>
+
+
+    <!-- Display property -->
+    <!-- block: Fully occupy the screen width and content ahead will come from next line to it.   -->
+    <!-- inline:  -->
+    <!-- inline-block: it has properties of inline but with like block it's height & width can be changes with specify the values for element. -->
+    <!-- flex: -->
+
+    <span>I'm span</span>
+    <span>I'm span2</span> <!-- bydefault span is inline, takes only the space it requires & let others to come in same line after it. -->
+
+    <!-- https://flexboxfroggy.com/ -->
 </body>
 </html>

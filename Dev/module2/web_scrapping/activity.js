@@ -23,7 +23,7 @@ function cb(error, response, html) {
         const dom = new JSDOM(html);
         //console.log(dom.window.document.querySelector("p").textContent); // "Hello world"
         const document = dom.window.document;
-        let teamsName = document.querySelectorAll("p.name");
+        let teamsName = document.querySelectorAll("p.name"); // querySelectorAll gives array
         console.log(teamsName[0].textContent);
         console.log(teamsName[1].textContent);
     }

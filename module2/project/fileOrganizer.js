@@ -1,7 +1,7 @@
 /* Input */
 //let input = process.argv[2];  // takes input given after cmd --> node fileOrganizer.js myInput
 //console.log(input);  // o/p: ['pathToNode','pathToFile','input_passed_in_terminal']
-// or console.log(input[2])
+// or console.log(input[2]) o/p: myInput
 
 let fs = require("fs");
 let path = require("path");

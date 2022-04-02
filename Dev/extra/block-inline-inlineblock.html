@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #efefef;
+        }
+        .box{
+            border-bottom: 2px solid black;
+            width: 20%;  /* try see if these boxes are place in same line after we reduce the width */
+            /* display: inline;  */
+            /* display: inline-block; */
+            /* height: 50px */
+        }
+        .box-blue{
+            background-color: lightblue;
+        }
+        .box-red{
+            background-color: red;
+        }
+        .box-purple{
+            background-color: purple;
+        }
+        .box-orange{
+            background-color: orange;
+        }
+        .container{
+            background-color: grey;
+            display: inline-flex;
+        }
+    </style>
+</head>
+<body>
+    <!-- CSS
+        display -> used for positioning the elements by using different values like: block, inline & inline-block 
+        newer option for display property called flex which we can use for building flex-box layout -->
+    
+    <!-- every html element has default display behaviour, here in below ex. we have four div elements & these elements like div, p tag & __ etc. they have default display behaviour know as block level. Which means that one they are placed in out template, they will each take the full width of their rows. So these four div element below are taking 100% of the space of there rows Note: we haven't assign this properties here still they are placed on each rows -->
+
+    <!-- <div class="box box-blue">1</div>
+    <div class="box box-red">2</div>
+    <div class="box box-purple">3</div>
+    <div class="box box-orange">4</div> -->
+
+    <!-- try changes -->
+    <!-- .box{ width: 20% } let's check if we assign them lower width then if they will come in same row, this is not the case they doesn't came in same row because they still keep their block level display behaviour regardless of assigned smaller width -->
+    <!-- .box{ display: inline } to place them side by side we need to assign new display behaviour let's say inline. What is inline? We have seen here an example of block level element but on the other hand they are also inline elements by default like span or anchor tags which can directly be placed side by side bacause they take space as much as necessary --> 
+
+    <!-- <span class="box box-blue">1</span>
+    <span class="box box-red">2</div>
+    <span class="box box-purple">3</span>
+    <span class="box box-orange">4</span> -->
+
+    <!-- downside of inline element is that we cann't apply width or height property because they just don't work -->
+    <!-- there is also third option display inline-block which take the benifit from both that is we can place them side by side also height & width properties can also be applied -->
+
+    <!-- an alternative to this is use of flex property, first thing, to using the flex property requires a parent or a container element so let's add a container div. Benifit of flex property can be applied only under the elements of the container, but it's not going to work outside elements like in below case it wouldn't work for box box-orange -->
+    <!-- Note: since these are block level element and normally the container element doesn't have any effect on there alignment of these boxs inside it i.e. it doesn't make them move or displaces from their position -->
+
+    <!-- try changes -->
+    <!-- .container{ display: flex; } -> boxes are placed side by side without changing their display behaviour because now these boxes are flex elements and the container still takes the full width of the row & still behavious like a block level element if you like you can also assign them like height property or different width properties but still they would be placed side-by-side -->
+    <!-- .box{ height: 50px; } -->
+    <!-- .container{ display: inline-flex } -> you would see that the background have disappeared & container only takes the necessary space as large as it children it still a flex container -->
+
+    <!-- using flex is really benificial we can easily -->
+    <div class="container">
+        <div class="box box-blue">1</div>
+        <div class="box box-red">2</div>
+        <div class="box box-purple">3</div>
+    </div>
+
+    <div class="box box-orange">4</div>
+</body>
+</html>

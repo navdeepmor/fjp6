@@ -9,7 +9,7 @@ const { JSDOM } = jsdom;
 
 /* callback - Can we pass fun as argument to in other fun?YES */
 
-const link = "https://www.amazon.in/mobile-phones/b/?ie=UTF8&node=1389401031&ref_=nav_cs_mobiles";
+const link = "https://www.espncricinfo.com/series/ipl-2021-1249214/royal-challengers-bangalore-vs-kolkata-knight-riders-eliminator-1254115/full-scorecard";
 
 request(link, cb);
 

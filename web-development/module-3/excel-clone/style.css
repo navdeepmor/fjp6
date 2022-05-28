@@ -1,0 +1,60 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: broder-box; 
+}
+
+.menu-container{
+    height: 4vh;
+    border: 0.1rem solid gray;
+}
+.calc-container{
+    height: 4vh;
+}
+.cells-container{
+    height: calc(100vh - 8vh);
+    background-color: lightgreen;
+    overflow: auto;
+}
+.top-row{
+    height: 4vh;
+    display: flex;
+}
+.top-left-cell{
+    height: 2rem;
+    width: 2rem;
+    border: 0.1rem solid gray;
+}
+/* .top-cell{
+    height: 4vh;
+    width: 97%;
+    border: 0.1rem solid gray;
+} */
+.top-right-cell{
+    height: 2rem;
+    width: 2rem; 
+    border: 0.1rem solid gray;
+}
+.sheet-container{
+    height: 4vh;
+    border: 0.1rem solid gray;
+}
+.lower-row{
+    display: flex;
+}
+.right-col{
+    display: flex;
+    /* flex-direction: row; */
+}
+
+
+
+
+
+/* --------------------- */
+
+.cell{
+    height: 2rem;
+    width: 2rem;
+    border: 2px solid red;
+}

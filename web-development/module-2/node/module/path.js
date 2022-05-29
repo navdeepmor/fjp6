@@ -1,4 +1,4 @@
-"C:\Users\navde\OneDrive\Desktop\FJP6\module2\node\path.js"
+// "C:\Users\navde\OneDrive\Desktop\FJP6\module2\node\path.js"
 
 let path = require("path"); // path is object
 console.log(path);

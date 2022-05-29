@@ -35,7 +35,7 @@ let destinationPath = path.join(__dirname, "our-directory", "text.txt");
 fs.copyFileSync(sourcePath, destinationPath);
 
                                                             /* ------------ check path ------------- */
-let detailsObj = fs.lstatSync(folderPath);                                                                          // it tells is the path given path is of dir or file?
+let detailsObj = fs.lstatSync(folderPath);                                                                      // it tells is the path given path is of dir or file?
 // console.log(detailsObj.isFile());
 // console.log(detailsObj.isDirectory());
 
@@ -45,7 +45,7 @@ let detailsObj = fs.lstatSync(folderPath);                                      
 for(let i = 1; i <= 10; i++){
     let dirPath = `dir-${ i }`;
     fs.mkdirSync(dirPath);
-    fs.writeFileSync(dirPath + "\\" +  "read-me.md", ` # I'm in dir dir-${ i } `);                                  // inside ` `, # is used for heading  
+    fs.writeFileSync(dirPath + "\\" +  "read-me.md", ` # I'm in dir dir-${ i } `);                              // inside ` `, # is used for heading  
 }
 
                                                         /* --------- to delete a non-empty dir --------- */
@@ -55,7 +55,7 @@ for(let i = 1; i <= 10; i++){
 // console.log(dirContent);                                                  
 // for(let i = 0; i < dirContent.length; i++){
 //     console.log(dirContent[i], "is delete", "in dir our-directory");
-//     fs.unlinkSync(__dirname+"\\our-directory"+"\\"+dirContent[i]);
+//     fs.unlinkSync(__dirname+"\\our-directory"+"\\"+dirContent[i]);                                           // to make it platform independent we can user path module here: fs.unlinkSync(path.join(__dirname, "our-directory", dirContent[i]));
 // }
 // fs.rmdirSync("our-directory");
 

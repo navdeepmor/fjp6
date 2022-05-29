@@ -1,34 +1,21 @@
-let cellsContainer = document.querySelector(".cells-container");
+let topRow = document.querySelector(".top-row");
+let leftCol = document.querySelector(".left-col");
+let topLeftCell = document.querySelector(".top-left-cell");
+let allCells = document.querySelector(".cell");
+let addressInput = document.querySelector("#address");
 
-function initCells(){
-    let topRow = "<div class='top-row'>";
-    topRow += "<div class='top-left-cell'></div>";
+cellsContentDiv.addEventListener("scroll", function(e){
+    let scrollFromTop = e.target.scrollTop;
+    let scrollFromLeft = e.target.scrollLeft;
 
-    for(let i = 0; i < 26; i++){
-        topRow += `<div class='top-right-cell'>${ String.fromCharCode(65 + i) }</div>`;
-    }
-    topRow += "</div>";
+    topRow.style.top = scrollFromTop + "px";
+    leftCol.style.left = scrollFromLeft + "px";
+    topLeftCell.style.top = scrollFromTop + "px";
+    topLeftCell.style.left = scrollFromLeft + "px"; 
+})
 
-    topRow += "<div class='lower-row'>";
-    topRow += "<div class='left-col'>";
-    for(let i = 1; i <= 100; i++){
-        topRow += `<div class="cell">${ i }</div>`;
-    }
-    topRow += "</div>";
-
-    topRow += "<div class='right-col'>";
-    for(let i = 1; i <= 26; i++){
-        topRow += `<div class="cells-row">`;
-        console.log(i)
-        for(let i = 1; i <= 100; i++){
-            topRow += `<div class="cell">cell</div>`;
-        }
-        topRow += `</div>`;
-    }
-    topRow += "</div>";
-    topRow += "</div>";
-    
-    cellsContainer.innerHTML = topRow;
+for(let i = 0; i < allCells.length; i++){
+    allCells[i].addEventListener("click", function(e){
+        console.log(e);
+    })
 }
-
-initCells();

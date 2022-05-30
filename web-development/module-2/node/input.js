@@ -17,7 +17,3 @@ let j = parseInt(parseInt(cmdlineargs[2], 10)); /* converts the given string int
 console.log(typeof j)
 j = j + 30;
 console.log(j);
-
-
-
-

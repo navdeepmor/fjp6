@@ -19,7 +19,7 @@ function initCells(){
     for(let i = 0; i < 100; i++){
         cellsContent += "<div class='row'>";                                                                    // each row 
         for(let j = 0; j < 26; j++){
-            cellsContent += `<div class='cell' contentEditable> cell </div>`;
+            cellsContent += `<div class='cell' rowid='${ i }' colid='${ j }' contentEditable > cell </div>`;
         }
         cellsContent += "</div>";
     }
@@ -29,7 +29,7 @@ function initCells(){
 }
 initCells();
 
-let db;
+let db;                                                                                                         // to store the front end value & later use them
 function initDb(){
     db = [];
     for(let i = 0; i < 100; i++){
@@ -38,7 +38,8 @@ function initDb(){
             let name = String.fromCharCode(65 + j) + (i + 1) + "";
             let cellObject = {
                 name: name,
-                value: ""
+                value: "",
+                formula: ""
             }
             row.push(cellObject);
         }

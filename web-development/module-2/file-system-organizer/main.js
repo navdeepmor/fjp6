@@ -1,7 +1,8 @@
-/* Input */
-//let input = process.argv[2];  // takes input given after cmd --> node fileOrganizer.js myInput
-//console.log(input);  // o/p: ['pathToNode','pathToFile','input_passed_in_terminal']
-// or console.log(input[2]) o/p: myInput
+                                                                /* Input */
+let input = process.argv[2];                                                                                    // takes input given after cmd --> node fileOrganizer.js myInput  |  console.log(input);  ->  o/p: ['pathToNode','pathToFile','input_passed_in_terminal']  |  console.log(input[2]);  ->  o/p: myInput  |  process.argv.slice(2);  ->  in order to get all the i/p entered  
+// node main.js tree "directoryPath"
+// node main.js organize "directoryPath"
+// node main.js help
 
 let fs = require("fs");
 let path = require("path");
@@ -17,7 +18,7 @@ let extensions = {
 
 if(fs.existsSync(ipFolderPath)){
     let files = fs.readdirSync(ipFolderPath);
-    for(let i=0;i<files.length;i++){
+    for(let i = 0; i < files.length; i++){
         let ext = path.extname(files[i]);
         let folderName = giveFolderName(ext);
         //console.log(files[i]+" | Folder -- "+giveFolderName(ext));

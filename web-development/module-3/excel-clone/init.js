@@ -19,7 +19,7 @@ function initCells(){
     for(let i = 0; i < 100; i++){
         cellsContent += "<div class='row'>";                                                                    // each row 
         for(let j = 0; j < 26; j++){
-            cellsContent += `<div class='cell' rowid='${ i }' colid='${ j }' contentEditable > cell </div>`;
+            cellsContent += `<div class='cell' rowid='${ i }' colid='${ j }' contentEditable > </div>`;    // using rowid & colid later we would identify then when click event is trigger on it.
         }
         cellsContent += "</div>";
     }
@@ -39,7 +39,8 @@ function initDb(){
             let cellObject = {
                 name: name,
                 value: "",
-                formula: ""
+                formula: "",
+                children: []
             }
             row.push(cellObject);
         }

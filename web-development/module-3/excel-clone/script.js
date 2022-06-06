@@ -6,7 +6,7 @@ let addressInput = document.querySelector("#address");
 let formulaInput = document.querySelector("#formula");
 let lastSelectedcell;
 
-cellsContentDiv.addEventListener("scroll", function(e){
+cellsContentDiv.addEventListener("scroll", function(e) {
     let scrollFromTop = e.target.scrollTop;
     let scrollFromLeft = e.target.scrollLeft;
 
@@ -16,7 +16,7 @@ cellsContentDiv.addEventListener("scroll", function(e){
     topLeftCell.style.left = scrollFromLeft + "px"; 
 })
 
-for(let i = 0; i < allCells.length; i++){
+for(let i = 0; i < allCells.length; i++) {
     allCells[i].addEventListener("click", function(e){
         let rowId = Number(e.target.getAttribute("rowid"));
         let colId = Number(e.target.getAttribute("colid"));
@@ -28,7 +28,7 @@ for(let i = 0; i < allCells.length; i++){
         formulaInput.value = cellObject.formula;
     })
 
-    allCells[i].addEventListener("blur", function(e){
+    allCells[i].addEventListener("blur", function(e) {
         lastSelectedCell = e.target;
         let cellValue = e.target.textContent;
         let { rowId, colId } = getRowIdColIdFromElement(e.target);  
@@ -41,7 +41,7 @@ for(let i = 0; i < allCells.length; i++){
         updateChildren(cellObject);
     })
 
-    allCells[i].addEventListener("keydown", function(e){
+    allCells[i].addEventListener("keydown", function(e) {
         if(e.key == "Backspace"){
             let cell = e.target;
             let { rowId, colId } = getRowIdColIdFromElement(cell);
@@ -58,7 +58,7 @@ for(let i = 0; i < allCells.length; i++){
     })
 }
 
-formulaInput.addEventListener("blur", function(e){
+formulaInput.addEventListener("blur", function(e) {
     let formula = e.target.value;
     if(formula){
         let { rowId, colId } = getRowIdColIdFromElement(lastSelectedCell);

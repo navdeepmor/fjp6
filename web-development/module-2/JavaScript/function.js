@@ -4,7 +4,7 @@
 
 function returnsAnything(param){
     let rVal = Math.random() > 0.5 ? true : "less than 0.5";
-    return rVal;                                                                                                // function don't any return type therefore it can return any type of value like in our case it can return boolean or string.
+    return rVal;                                                                                                // function don't have any return type therefore it can return any type of value like in our case it can return boolean or string.
 }
 let rVal = returnsAnything([1, 2, 3, 4, 5]);
 console.log("rVal", rVal);

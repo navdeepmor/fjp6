@@ -29,9 +29,9 @@ function initCells(){
 }
 initCells();
 
-let db;                                                                                                         // to store the front end value & later use them
+let db = [];                                                                                                         // to store the front end value & later use them
 function initDb(){
-    db = [];
+    let newSheetDb = [];
     for(let i = 0; i < 100; i++){
         let row = [];
         for(let j = 0; j < 26; j++){
@@ -45,7 +45,8 @@ function initDb(){
             }
             row.push(cellObject);
         }
-        db.push(row);
+        newSheetDb.push(row);
     }
+    db.push(newSheetDb);
 }
 initDb();

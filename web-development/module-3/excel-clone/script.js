@@ -18,9 +18,14 @@ cellsContentDiv.addEventListener("scroll", function(e) {
 
 for(let i = 0; i < allCells.length; i++) {
     allCells[i].addEventListener("click", function(e){
+        console.log(db);
         let rowId = Number(e.target.getAttribute("rowid"));
         let colId = Number(e.target.getAttribute("colid"));
         let address = String.fromCharCode(65 + colId) + (rowId + 1) + "";
+
+        let selectedCell = document.querySelector(`div[rowid='${ rowId }'][colid='${ colId }']`);
+        // selectedCell.style.borderColor = 'green';
+
         // console.log(address);
         let cellObject = db[rowId][colId];
         addressInput.value = address;

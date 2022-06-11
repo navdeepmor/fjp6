@@ -25,5 +25,7 @@ fnContainer1();
     console.log("I would get invoked on my own");
 })();
                                                         /* --------- Arrow fn --------- */   
-         
-
+let fn = (num) => {                                                                                                 // in case of single parameter like in this case num is only there then we can skip (), Also we can skip return. Thus we can also write this is $let fn = num => num*num;
+    return num*num;
+}         
+// console.log(fn(5));

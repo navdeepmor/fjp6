@@ -5,7 +5,7 @@ import java.util.*;
 public class Main {
   private static class Node {
     int data;
-    ArrayList< Node> children = new ArrayList< >();
+    ArrayList< Node> children = new ArrayList<>();
   }
 
   public static void display(Node node) {
@@ -57,6 +57,41 @@ public class Main {
     return sz;
   }
 
+  public static class Pair{
+    Node node;
+    int level;
+
+    Pair() {
+
+    }
+
+    Pair(Node newNode, int newLevel) {
+        this.node = newNode;
+        this.level = newLevel;
+    }
+  }
+
+  public static void traversal3(Node root){
+    Queue<Pair> que = new ArrayDeque<>();
+    Pair rootPair = new Pair(root, 1);
+    que.add(rootPair);
+    int preLevel = 1;
+    
+    while(que.size() > 0) {
+        Pair pair = que.remove();
+        if(pair.level != preLevel) {
+            System.out.println();
+            preLevel++;
+        }
+
+        System.out.print(pair.node.data+" ");
+        for(Node child: pair.node.children) {
+            Pair newPair = new Pair(child, pair.level + 1);
+            que.add(newPair);
+        }
+    }
+  }
+
   public static void main(String[] args) throws Exception {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     int n = Integer.parseInt(br.readLine());
@@ -69,6 +104,6 @@ public class Main {
     Node root = construct(arr);
     // int sz = size(root);
     // System.out.println(sz);
-    display(root);
+    traversal3(root);
   }
 }

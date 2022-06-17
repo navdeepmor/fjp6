@@ -41,54 +41,22 @@ public class Main {
         st.push(t);
       }
     }
-
     return root;
   }
 
-  public static int size(Node node) {
-    if (node == null) {
-      return 0;
-    }
+  static int size;
+  static int min;
+  static int max;
+  static int height;
+  
+  public static void multiSolver(Node node, int depth) {
+    size++;
+    min = Math.min(min, node.data);
+    max = Math.max(max, node.data);
+    height = Math.max(height, depth);
 
-    int sz = 1;
-    for (Node child : node.children) {
-      sz += size(child);
-    }
-    return sz;
-  }
-
-  public static class Pair{
-    Node node;
-    int level;
-
-    Pair() {
-
-    }
-
-    Pair(Node newNode, int newLevel) {
-        this.node = newNode;
-        this.level = newLevel;
-    }
-  }
-
-  public static void traversal3(Node root){
-    Queue<Pair> que = new ArrayDeque<>();
-    Pair rootPair = new Pair(root, 1);
-    que.add(rootPair);
-    int preLevel = 1;
-    
-    while(que.size() > 0) {
-        Pair pair = que.remove();
-        if(pair.level != preLevel) {
-            System.out.println();
-            preLevel++;
-        }
-
-        System.out.print(pair.node.data+" ");
-        for(Node child: pair.node.children) {
-            Pair newPair = new Pair(child, pair.level + 1);
-            que.add(newPair);
-        }
+    for(Node child: node.children) {
+      multiSolver(child, depth + 1);
     }
   }
 
@@ -102,8 +70,17 @@ public class Main {
     }
 
     Node root = construct(arr);
-    // int sz = size(root);
-    // System.out.println(sz);
-    traversal3(root);
+
+    size = 0;
+    min = Integer.MAX_VALUE;
+    max = Integer.MIN_VALUE;
+    height = 0;
+
+    multiSolver(root, 0);
+    display(root);
+    System.out.println("size of generic tree " + size);
+    System.out.println("min of generic tree " + min);
+    System.out.println("max of generic tree " + max);
+    System.out.println("height of generic tree " + height);
   }
 }

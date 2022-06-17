@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+                                                            /* ------ this keyword ----- */
+// console.log("outside", this);                                                                                // o/p: ? windows   why? window is global obj  this ref to curr obj                                                     
+
+// function fn1() {                                                                                              // what is this value inside a function? how we call? obj through which function is call i.e. the object in who's context fn being call or the one who calls the fn | in shot the curr obj in curr funciton    
+//     console.log("inside fn1", this);                                                                          
+// }
+// fn1();                                                                                                        // o/p: ? windows  why? how we call? fn1()  which is window.fn1() but since window is global we need not to write window.  
+
+// let obj1 = {
+//     name: "Lalu",
+//     func: fn1
+// }
+// obj1.func();                                                                                                  // o/p: ? obj1
+
+// function fn2() {
+//     console.log(this);                                                                                       
+//     function fn3() {
+//         console.log(this);                                                                                   
+//     }
+//     fn3();                                                                                                   // o/p: ? window    why? how we call? fn3()  which is window.fn3()
+// }
+
+// let obj2 = {
+//     name: "Aalu",
+//     func: fn2
+// }
+// obj2.func();                                                                                                 // o/p: ? obj2  
+                     
+                                                          /* ----- METHOD 1: bind function ----- */
+// function fn4() {
+//     console.log(this);
+//     function fn5() {
+//         console.log(this);
+//     }
+//     let fnDef = fn5.bind(this);                                                                              // bind() it return function def
+//     fnDef();
+// }
+
+// let obj3 = {
+//     name: "Bhalu",
+//     func: fn4
+// }
+
+// obj3.func();
+
+                                                          /* ----- METHOD 2: arrow function ----- */
+// const obj4 = {
+//     name: "Bhalu",
+//     sayHello: function() {
+//         console.log("Hello", this);                                     
+//         var sayBye = () => {
+//             console.log('Bye', this);
+//         }
+//         sayBye();
+//     }
+// }
+
+// obj4.sayHello();                                                                                                // o/p: ? line 62 - obj4  line 64 - obj4    line 64 - Ref > this > line 90  inside arrow function value of this keyword depends where arrow function is defined & here sayBye is defined inside the object obj4
+
+
+var sayBye = () => {
+    console.log('Bye', this); 
+}
+sayBye();                                                                                                           // o/p: ? window  why? where we defined arrow fn? we have defined it globall y
+</script>
+</html>
+
+
+
+
+                                                        <!-- ------ Ref ------ --> 
+<!-- 
+                                                            ------- this -------
+#   In scope chain, the scope of a function depends on where the function was defined not how we called the function but incase of this keyword it's exactly
+    the opposite. The value of this keyword depend upon how we call the function like did we do 
+        window.fn1(); 
+            or 
+        obj1.fn1(); 
+
+    And it doesn't matter where exactly we define fn1. So depending on how we are calling our function the value of this keyword is changing so it's basiclly
+    following some sort of dynamic scope so it's dynamic. 
+    
+    That's why arrow function comes to picture, they were introduce in ES6. Inside of arrow function the value of this depends upon where the arrow function 
+    is defined not how we are calling the arrow function.
+    
+    
+
+#   this keyword referes to current object 
+    here we talking about this keyword in browser ent. and non-stict mode 
+-->

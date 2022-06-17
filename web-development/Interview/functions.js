@@ -25,7 +25,43 @@ fnContainer1();
     console.log("I would get invoked on my own");
 })();
                                                         /* --------- Arrow fn --------- */   
-let fn = (num) => {                                                                                                 // in case of single parameter like in this case num is only there then we can skip (), Also we can skip return. Thus we can also write this is $let fn = num => num*num;
+let fn = (num) => {                                                                                                 // in case of single parameter like in this case num is only there then we can skip (), Also we can skip return. Thus we can also write this as $let fn = num => num*num;
     return num*num;
 }         
-// console.log(fn(5));
+console.log(fn(5));
+                                                       /* ----- First Class Citizens ----- */
+                                                                                                                    // 1. Assignment -> fn expression  
+function fn1(param) {                                                                                               //    Variable can be passed as a paramenter 
+    console.log(param);
+    return 'completed';
+}   
+
+function fn2() {
+    console.log("You are inside fn2");
+}
+
+fn1([-9, 2, 3, 7, 1]);
+fn1(fn2);                                                                                                           //    here we have passed fn2 that means we passed address of fn2               
+
+
+function fn3(param) {                                                                                               // 2. function can be passed as a parameter | used in fp, callback, higher order functions ex. map, reduce or filter.                                                                                          
+    console.log(param);
+    param();
+    return 'completed';
+}   
+
+function fn4() {
+    console.log("You are inside fn2");
+}
+
+fn3(fn4);                                                                                                           // o/p: ?
+
+function outer() {                                                                                                  // 3. function can be returned from a function | used in closure
+    console.log("I'm outer returning inner");
+    return function inner() {                                                                                       //    we can also make it as annonymous function like $return function () { console.log("I'm inner") }
+        console.log("I'm inner");
+    }
+}
+let rVal1 = outer();
+console.log("returned value", rVal1);
+rVal1();

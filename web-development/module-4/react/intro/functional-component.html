@@ -4,16 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>                                             <!-- this link is for the Algo which identify the difference -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>                 <!-- this link is for the Algo which identify the difference -->
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
-    <title>Document</title>
+    <title>Functional Components</title>
 </head>
 <body>
-    <div id="root"></div>
+    <div id="root">
+        
+    </div>
 </body>
 <script type="text/babel">
-                                            /* ----- this is how we normaly do ----- */
+                                                    /* ------- in JS ------- */
     // let ele = document.createElement("h1");
     // ele.innerHTML = "I cann see this diplayed";
     // let root = document.getElementById("root");
@@ -28,14 +30,15 @@
                                                      /* ----- in JSX ----- */
     function Element1() {                                                                                    // functional component
         return( 
-            <h1>JSX </h1>
+            <h1> this is displayed using JSX </h1>
         )
     }    
-    function Element2({name="NoName", design}) {
+
+    function Element2({ name="NoName", design }) {                                                          // destructuring 
         return (
             <div>
-                <h1>passed values are {name}</h1>
-                <h1>{design}</h1>
+                <h1> passed values are { name } </h1>
+                <h1> { design } </h1>
             </div>
         )
     }
@@ -45,7 +48,7 @@
         return (
             <React.Fragment>
                 <Element1/>
-                <Element2 name="Navdeep" design="SE"/>
+                <Element2 name = "Navdeep" design = "SE"/>
                 <Element1/>
                 <Element2/>
             </React.Fragment>
@@ -55,3 +58,12 @@
     ReactDOM.render(<Parent/>, document.getElementById("root"));
 </script>
 </html>
+
+
+<!-- 
+static UI :  functional Component   
+Dynamic UI:  class Component
+
+Note:
+    Now hooks is introduce in functional component with which we can define states in it. Therefore we can make dynamic UI using functional components also.  
+ -->

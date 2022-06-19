@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script ></script>
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>                                             <!-- this link is for the Algo which identify the difference -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>                         <!-- this link is for the Algo which identify the difference -->
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
     <title>Document</title>
@@ -15,7 +15,30 @@
         
     </div>
 </body>
-    <script>
-        
+    <script type = "text/babel">
+        class DisplayComponent extends React.Component {
+            constructor() {
+                                                                                                                    // inside constructor we can define states
+                super();                                                                                            // we got this of React.Component 
+            }
+                                                                                                                    // here we can def our fn
+            render() {
+                return (
+                    <h1> using class component </h1>
+                )
+            }
+        }
+
+        ReactDOM.render(<DisplayComponent/>, document.getElementById("root"));
     </script>
 </html>
+
+
+
+<!--
+
+    Warning: <displayComponent /> is using incorrect casing. Use PascalCase for React components, or lowercase for HTML elements.
+             at displayComponent
+
+    
+  -->

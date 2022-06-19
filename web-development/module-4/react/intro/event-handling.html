@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>                                             <!-- this link is for the Algo which identify the difference -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>                     <!-- this link is for the Algo which identify the difference -->
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
-    <title>Document</title>
+    <title>Event Handling</title>
 </head>
 <body>
     <div id="root">
@@ -15,16 +15,17 @@
     </div>
 </body>
     <script type="text/babel">
-        class EventHandling extends React.Components{
+        class CounterComponent extends React.Component {                                                        // here we have defined a basic class inside which we can def states, to make it a class component we inherites React.Component. Now CounterComponent is no longer a normal JS class, it's now our react component class. 
             constructor(){
-                super();
-                this.state = {
+                super();                                                                                        // hume isse is class ka this milta hai 
+                this.state = {                                                                                               
                     count: 0
                 }
             }
 
             increment = () => {
-                this.setState({
+                // this.state.count = this.state.count + 1;                                                     // WRONG METHOD
+                this.setState({                                                                                 // whenever we have to update in class component we have to use function setState. In which we have provide an object, within which key would be one which we need update 
                     count: this.state.count + 1,
                 })
             }
@@ -39,11 +40,27 @@
                 return (
                     <div>
                         <h1> { this.state.count } </h1>
-                        <button onclick = { this.increment }> + </button>
-                        <button onclick = { this.decrement }> - </button> 
+                        <button onClick = { this.increment }> + </button>
+                        <button onClick = { this.decrement }> - </button> 
                     </div>
                 )
             }
         }  
+
+        ReactDOM.render(<CounterComponent/>, document.getElementById("root"));                                  // Or ReactDOM.render(<CounterComponent></CounterComponent>, document.getElementById("root"));    In react we uses closing tag
     </script>
 </html>
+
+
+
+<!-- 
+class component 
+    1. state                                                                                                    state :  react object    info / Properties of React components  
+    2. fn
+
+Note:
+    1. Whatever we write inside ClassComponent > render that would be displayed on UI
+    2. Whenever state is changed it re-render i.e. React got infomed that it has to again run render. 
+
+    
+ -->

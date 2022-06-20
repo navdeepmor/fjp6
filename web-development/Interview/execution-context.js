@@ -13,16 +13,16 @@ top to bottom & left to right
 /* ---------------------------------------------------------------- */
 
 /* Q1. */
-// var a = 10;
+var a = 10;
 
-// function print(){
-//     var b = 20;
-//     console.log(b);
-// }
+function print(){
+    var b = 20;
+    console.log(b);
+}
 
-// var c = 30;
-/* Stack --> 1.gec 2.ec */
-/* 1.gec: 1.memory allocate - a:undefined c:undefined print:8k print(){ - which will be defined in heap & contains address before print --> before execution */
+var c = 30;
+/* stack --> 1.gec 2.ec */                                                                                      // call stack
+/* 1.gec: 1.memory allocate - a:undefined c:undefined print:8k  print(){ - which will be defined in heap & contains address before print --> before execution */
 /* 2. ec: 1.memory allocate - b:undefined  */
 
 /* ---------------------------------------------------------------- */
@@ -39,31 +39,73 @@ var print = function(){
 }
 
 print();
-/* Stack --> 1.gec 2.ec */
+/* stack --> 1.gec 2.ec */
 /* 1.gec: 1.memory allocate - print:undefined --> before execution */
-/* error: print is not a function because it's undefined  */
+/* error: print is not a function  because it's undefined  */
 /* ---------------------------------------------------------------- */
+
+ /* Q4. */
+console.log("line number 1", varName);
+var varName = 10;
+
+function b() {
+    console.log("line number 5", varName);
+}
+
+console.log("line number 7", varName);
+
+function fn() {
+    console.log("line number 9", varName);
+    var varName = 20;
+    b();
+    console.log("line number 13", varName);
+}
+fn();
+/* call stack --> 1.gec 2.ec 3.ec */
+/* 1.gec: 1.memory allocate - varName:undefined b:8k fn:11k --> before execution */
+/* 2. ec: 1.memory allocate - varName:undefined */
+/* 3. ec: 1.memory allocate -  */
+
+/*
+            |---------------------------|                     |                   |
+            |  global: {..}  this: {}   |                     |-------------------|
+      ec    |                           |                     |                   |
+            |                           |                     |-------------------| 
+            |---------------------------|                     |                   |
+            |  global: {..}  this: {}   |                     |-------------------|
+      ec    |                           |                     |                   |
+            |  varName: undefined       |                     |-------------------| 
+            |---------------------------|                     |                   |
+            |  global: {..}  this: {}   |                     |-------------------|
+     gec    |                           |                     |                   |
+            |  varName: undefined       |                     |-------------------| 
+            |  b      : 8k              |                  8k |  b() { .. }       |             
+            |  fn     : 11k             |                     |-------------------|                         
+             ---------------------------                  11k |  fn() { .. }      |
+                     call stack                                -------------------
+                                                                      Heap
+*/
+
+/* ---------------------------------------------------------------- */                                                           
 
 
 
                                                             /* ------- Ref ------- */
 /*
-Why execution context?      In JS there is no main, execution context is same as main of JS  
-What is execution context?  execution context is wrapper in which JS supplies many things and within which our code runs. In execution context we have two 
-                            important things are 
-                                1. global object -  every execution context get a global object, it's different in node JS, different in browser, different in 
-                                                    photoshope etc, which provides us ent. Even if we didn't write any code & we just run our file than also we 
-                                                    would get a global object along.   
-                                2. this          -  when we runs our code at start along with global object, JS engine gave us this variable.  
+Why execution context?   
+What is execution context?  Wrapper: 
+                                1. global object 
+                                2. this   
 
-                            Note:
-                                In browser global object is know as window.
-                                In case of nodeJS this is an empty object whereas in browser it's equal to window object. 
+Creattion phase: 
+    1. Memory allocates 
+        - variable  undefined                                                                                   [ Hoizting ]
+        - fn        12k
 
-                            in JS there is nothing like main or etc. Code which is not inside a funtion that code is know as global code or that piece of area 
-                            is know global area and wrapper for that is know as global execution context.    
+                                                        
 */
 
+console.log(global);                                                                                            // o/p: ?
 console.log(this);                                                                                              // o/p: ?
 
 console.log("val1 is " + val1);                                                                                 // o/p: ?                                                                                   
@@ -74,26 +116,37 @@ console.log("val1 is " + val1);                                                 
 
 
                                                             /* ------- Q1. ------- */
-function real() {
-    console.log("I'm real, Always run me");
+function fn1() {
+    console.log("I'm going to run");
 }
-function real() {
-    console.log("No I'm the real one")
+function fn1() {
+    console.log("please run me")
 }
-function real() {
-    console.log("You both are wast");
+function fn1() {
+    console.log("let's see");
 }
-real();                                                                                                         // o/p: ?
+fn1();                                                                                                         // o/p: ?
 
                                                             /* ------- Q2. ------- */
-function real() {
-    console.log("I'm real, Always run me");
+function fn2() {
+    console.log("I'm going to run");
 }
-function real() {
-    console.log("No I'm the real one")
+function fn2() {
+    console.log("please run me")
 }
-real();                                                                                                         // o/p: ?
-function real() {
-    console.log("You both are wast");
+fn2();                                                                                                         // o/p: ?
+function fn2() {
+    console.log("let's see");
 }
 
+                                                            /* ------- Q3. ------- */
+fn3(); 
+function fn3() {
+    console.log("I'm going to run");
+}
+function fn3() {
+    console.log("please run me")
+}                                                                                                               // o/p: ?
+function fn3() {
+    console.log("let's see");
+}

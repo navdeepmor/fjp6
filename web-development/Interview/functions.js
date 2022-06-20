@@ -51,7 +51,7 @@ function fn3(param) {                                                           
 }   
 
 function fn4() {
-    console.log("You are inside fn2");
+    console.log("You are inside fn4");
 }
 
 fn3(fn4);                                                                                                           // o/p: ?

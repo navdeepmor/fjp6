@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 export default class Banner extends Component {
   render() {
     // let movie = movies.results;
-    let movie = { backdrop_path: "191223-end-of-decade-cinema-main-kh.webp", original_title: "WONDER WOMAN", title: "wonder-woman" };
+    let movie = { backdrop_path: "https://img.etimg.com/thumb/msid-90044567,width-650,imgsize-88974,,resizemode-4,quality-100/the-batman.jpgp", original_title: "BATMAN", title: "BATMAN BEGINS", overview: "Batman is a superhero appearing in American comic books published by DC Comics. The character was created by artist Bob Kane and writer Bill Finger, and debuted in the 27th issue of the comic book Detective Comics on March 30, 1939." };
     return (
         <>
             {
@@ -12,11 +12,11 @@ export default class Banner extends Component {
                 <div className="spinner-border text-secondary" role="status">
                     <span className="visually-hidden">Loading...</span>
                 </div>:
-                <div className="card banner-card" style = { { width: '18rem', margin: '2rem' } }>
-                    <img src = {`C:\\Users\\navde\\OneDrive\\Desktop\\${ movie.backdrop_path }`} className = "card-img-top banner-img" alt = {`${ movie.title }`}/>
+                <div className="card banner-card" style = { { outline: 'none', border: 'none' } }>
+                    <img src = {`${ movie.backdrop_path }`} className = "card-img-top banner-img" alt = {`${ movie.title }`}/>
                     {/* <div className="card-body"> */}
-                        <h5 className="card-title banner-title">{ movie.original_title }</h5>
-                        <p className="card-text banner-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <h1 className="card-title banner-title">{ movie.original_title }</h1>
+                        <p className="card-text banner-text">{ movie.overview }</p>
                         {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
                     {/* </div> */}
                 </div>

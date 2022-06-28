@@ -10,7 +10,8 @@ export default class Movies extends Component {
             hover: '',
             parr: [ 1 ],
             currPage: 1,
-            movies: []
+            showMovies: [],
+            favourites: []
         }
         // console.log("inside constructor");
     }
@@ -21,7 +22,7 @@ export default class Movies extends Component {
         let data = pageResult.data;
         // console.log(data);
         this.setState({                                                                                             // setState fn is async  
-            movies: [ ...data.results ]
+            showMovies: [ ...data.results ]
         })
     }
 
@@ -31,7 +32,7 @@ export default class Movies extends Component {
         let data = pageResult.data;
         // console.log(data);
         this.setState({
-            movies: [ ...data.results ]
+            showMovies: [ ...data.results ]
         })
     }
 
@@ -49,7 +50,7 @@ export default class Movies extends Component {
             currPage: this.state.currPage - 1
         }, this.pageChange)                                                                                         // using callback to resolve issue at line 48 because of which it will first set the state & only then calls the pageChange
         // this.pageChange();                                                                                       // since setState is async therefore it will give us promise meanwhile move ahead for execution of pageChange, but currPage is not change 
-        console.log(this.state.currPage);
+        // console.log(this.state.currPage);
     }
 
     handleNext = () => {
@@ -58,7 +59,7 @@ export default class Movies extends Component {
             currPage: this.state.currPage + 1
         }, this.pageChange)
         // this.pageChange();
-        console.log(this.state.currPage);
+        // console.log(this.state.currPage);
     }
 
     handleSelectPage = (pageNo) => {
@@ -70,7 +71,7 @@ export default class Movies extends Component {
     }
 
     handleFavourites = (movieObj) => {
-        let oldData = JSON.parse(localStorage.getItem('movies') || "[]")                                                  // in localStorage data stores as a string
+        let oldData = JSON.parse(localStorage.getItem('movies') || "[]")                                                    // in localStorage data stores as a string
         if(this.state.favourites.includes(movieObj.id)) {
             oldData = oldData.filter((movie) => 
                 movie.id != movieObj.id
@@ -78,8 +79,18 @@ export default class Movies extends Component {
         } else {
             oldData.push(movieObj);
         }
-        console.log("inside handleFavourites", oldData);
-        localStorage.setItem("movies", JSON.stringify(oldData));
+        localStorage.setItem("movies", JSON.stringify(oldData));                                                            // setItem() is an sync fn therefore calling updateFavourites immediate after it wouldn't be an issue
+        this.updateFavourites();                                                                                            
+    }
+
+    updateFavourites = () => {
+        let oldData = JSON.parse(localStorage.getItem('movies') || "[]");
+        // console.log(oldData);
+        let tmpArr = oldData.map((movieObj) => movieObj.id);
+        // console.log(tmpArr);
+        this.setState({
+            favourites: [ ...tmpArr ]
+        });
     }
 
     render() {
@@ -88,7 +99,7 @@ export default class Movies extends Component {
         return (
             <>
                 { 
-                    this.state.movies.length == 0 ? 
+                    this.state.showMovies.length == 0 ? 
                     <div className="spinner-border text-secondary" role="status">
                         <span className="visually-hidden">Loading...</span>
                     </div>:
@@ -96,8 +107,8 @@ export default class Movies extends Component {
                         <h3 className = 'text-center'> <strong> Trending </strong></h3>
                         <div className = 'movies-list'>
                             {
-                                this.state.movies.map((movieObj) => (
-                                    <div className="card movies-card" style = { { border: 'none' } } onMouseEnter = { () => this.setState({ hover: movieObj.id }) } onMouseLeave = { () => { this.setState({ hover: '' }) } } >
+                                this.state.showMovies.map((movieObj) => (
+                                    <div key = { movieObj.id } className="card movies-card" style = { { border: 'none' } } onMouseEnter = { () => this.setState({ hover: movieObj.id }) } onMouseLeave = { () => { this.setState({ hover: '' }) } } >
                                         <img src = {`https://image.tmdb.org/t/p/original${ movieObj.backdrop_path }`} className = "card-img-top movies-img" alt = {`${ movieObj.title }`}/>
                                         {/* <div className="card-body"> */}
                                             <h5 className="card-title movies-title">{ movieObj.original_title }</h5>
@@ -105,7 +116,7 @@ export default class Movies extends Component {
                                             <div className = "button-wrapper movies-button" style = { { display: 'flex', width: '100%', justifyContent: 'center' } }> 
                                                 {
                                                     this.state.hover == movieObj.id &&
-                                                    <a className="btn btn-primary movies-button" onClick = { () => this.handleFavourites(movieObj) }> Add to Favourites </a>
+                                                    <a className="btn btn-primary movies-button" onClick = { () => this.handleFavourites(movieObj) }> { this.state.favourites.includes(movieObj.id) ? "Remove from Favourites" : "Add to Favourites" } </a>
                                                 } 
                                             </div>
                                         {/* </div> */}

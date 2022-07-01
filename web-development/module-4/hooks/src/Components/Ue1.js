@@ -6,7 +6,7 @@ function Ue1() {
     useEffect(() => {                                                                                               // Variation 1:  useEffect(() => { })    here it is runs for both
         console.log("useEffect");                                                                                   //                                          - componentDidMount     
         document.title = `Button clicked ${ count } times`;                                                         //                                          - componentDidUpdate
-        // Side effects wala work
+        // Side effects wala work ex: calling API
     })
 
     console.log("render");

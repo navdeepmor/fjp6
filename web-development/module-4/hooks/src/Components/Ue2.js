@@ -3,10 +3,9 @@ import React, { useState, useEffect } from 'react'
 function Ue2() {
     const [count, setCount] = useState(0);
 
-    useEffect(() => {                                                                                               // Variation 2:  useEffect(() => { }, [])    here it is runs for both
+    useEffect(() => {                                                                                               // Variation 2:  useEffect(() => { }, [])    here it is runs for only
         console.log("useEffect");                                                                                   //                                               - componentDidMount     
-        document.title = `Button clicked ${ count } times`;                                                         //
-        // side errect wala work                                                   
+        document.title = `Button clicked ${ count } times`;                                                                                                          
     }, [])
 
     console.log("render");

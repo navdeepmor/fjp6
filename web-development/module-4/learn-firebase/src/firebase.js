@@ -27,6 +27,8 @@ export const database = {
     users: firestore.collection('users')
 }
 
+export const storage = firebase.storage();
+
 /* 
                                                             -------- firebase --------
     firestore DB:
@@ -34,5 +36,9 @@ export const database = {
             - collection                                                                                    in our case 'users'
                 - document                                                                                  user1 data, user2 data .. 
                     - Multiple key-value pairs
+
+    Storage:
+        - to store img, video etc 
+
                                                             
 */

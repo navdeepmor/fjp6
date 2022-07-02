@@ -37,7 +37,7 @@ export default function Firebase() {
     }
 
     let deleteUser = async () => {
-        let uid = 'ZVwQdQnPQIDDpl3eNPrL';
+        let uid = '10001';
         await database.users.doc(uid).delete();
     }
 
@@ -49,7 +49,7 @@ export default function Firebase() {
                 <label htmlFor = 'age'> Age </label>
                 <input type = 'number' value = { age } onChange = { (e) => setAge(e.target.value) } />
                 <button onClick = { updateUser } > Update </button>
-                <button onClick = { deleteUser } ></button>
+                <button onClick = { deleteUser } > Delete </button>
             </div>
         </>
     )

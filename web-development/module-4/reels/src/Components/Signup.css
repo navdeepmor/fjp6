@@ -1,0 +1,19 @@
+.signupWrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.signupCard {
+    width: 30vw;
+    margin: 5%;
+}
+
+.instagram-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.instagram-logo img{
+    width: 60%;
+}

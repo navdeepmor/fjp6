@@ -15,8 +15,28 @@
     2- Also able to add properties with property name and value as input -->
 
   <!-- Solution: -->
+    <h3> NEW ELEMENT </h3>
+    <input type="text" id="newElementName">
+    <h3> PROPERTY </h3>
+    <input type="text" id="newEleProperty">
+    <h3> VALUE </h3>
+    <input type="text" id="newEleValue">
+    <input type="submit" value="CREATE">
 
+    <h3 id="addElement"></h3>
+
+    <script>
+      let createBtn = document.getSelector("input[type='submit']");
+      createBtn.addEventLstener("click", function() {
+        let newElementName = document.getElementById("#newElement")
+        let newEleProperty = document.getElementById("#newEleProperty");
+        let newEleValue = document.getElementById("newEleValue");
+
+        let newElement = document.createElement(newElement.value);
+        let addHere = document.getElementById("addElement");
+        addHere.append(newElement);
+      })
+    </script>
   
 </body>
-
 </html>

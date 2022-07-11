@@ -1,4 +1,4 @@
-// Create a trap for the following object so private data cannot be accessed 
+// Q. Create a trap for the following object so private data cannot be accessed 
 
 let userObj = {
     private:{

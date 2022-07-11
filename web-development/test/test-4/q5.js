@@ -35,10 +35,9 @@ let {
 
 console.log(`${string}-${undefined}`);
 
-// options:
-
-// A) string-undefined
-
-// B) string-defined
-
-// C) Error
+/*
+  options:
+    A) string-undefined
+    B) string-defined
+    C) Error
+*/

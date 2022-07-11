@@ -18,7 +18,7 @@ export default function Fireauth() {
         return(() => {
             unsubscribeAuth();                                                                                          // cleanUp - inside return we would call the ref. to remove the listener on auth | return executes only once and that also before componentWillUnmount                                                                                                                    
         })
-    }, [])
+    }, [])                                                                                                              // [] - componentDidMount
 
     let logout = async () => {
         await auth.signOut();

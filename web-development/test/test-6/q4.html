@@ -68,7 +68,14 @@
       });
 
       //   Solution:
-
+      let innerContainers = document.querySelectorAll(".inner-container");
+      for(let i = 0; i < innerContainers.length; i++) {
+        innerContainers[i].addEventListener("Click", function(e) {
+          alert("parent of p was clicked");
+          let customEvent1 = new Event("delete-event", {bubbles: false});
+          e.currentTarget.dispatchEvent(); 
+        })
+      }
     </script>
   </body>
 </html>

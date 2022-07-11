@@ -13,10 +13,10 @@ inc(1).then(function(x){
     console.log(increment(x))
 })
 
-
-options:
-
-A) Error 
-B) 3 
-C) promise {3}
-D) promise {undefined}
+/*
+    options:
+        A) Error 
+        B) 3 
+        C) promise {3}
+        D) promise {undefined}
+*/

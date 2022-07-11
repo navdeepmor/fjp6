@@ -4,33 +4,26 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
-// import {createUseStyles} from 'react-jss'                                                           // deprecated: import { makeStyles } from '@mui/styles' 
-// import {Styled} from 'styled-jss'
+// import { makeStyles } from '@mui/styles' 
 import Alert from '@mui/material/Alert';
 import './Signup.css';
 import instagramLogo from '../Assets/Instagram.jpg';
 import TextField from '@mui/material/TextField';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import {Link} from 'react-router-dom';
 
 export default function Signup() {
 
-    // const useStyles = createUseStyles({
-    //     text1:{
-    //         color:'green',
-    //         textAlign:'center'
+    // const useStyles = makeStyles({
+    //     text1: {
+    //       color: "gray",
+    //       textAlign: "center",
+    //     },
+    //     card2: {
+    //       height: '5vh',
+    //       marginTop: '2%'
     //     }
-    // })
-
-    // const classes = useStyles()
-
-    // const styled = Styled({
-    //     root: {
-    //         color: 'green',
-    //         textAlign: 'center'
-    //     }
-    // })
-
-    // const classes = styled();
+    //   });
 
     return (
         <div className="signupWrapper" >
@@ -40,7 +33,7 @@ export default function Signup() {
                         <img src={instagramLogo} alt = "" />
                     </div>
                     <CardContent>
-                        <Typography className={classes.text1} variant="subtitle1">                                            {/* className={classes.text1}  */}
+                        <Typography variant="subtitle1">                                            {/* className={classes.text1}  */}
                             Sign up to see photos and videos from your friends 
                         </Typography>
                         { true && <Alert severity="error"> This is an error alert - check it out! </Alert> }
@@ -56,13 +49,19 @@ export default function Signup() {
                         <Button color="primary" fullWidth={true} variant="contained"> Sign Up </Button>
                     </CardActions>
                     <CardContent>
-                        <Typography className={classes.text1} variant="subtitle1">
+                        <Typography variant="subtitle1">
                             By signing up, you agree to our Terms, Data Policy and Cookies policy.
+                        </Typography>
+                    </CardContent>
+                </Card>
+                <Card variant="outlined">
+                    <CardContent>
+                        <Typography variant="subtitle1">                                                        {/* className={classes.text1} */}
+                            Having an account? <Link to="/login" style={{textDecoration:'none'}}> Login </Link> 
                         </Typography>
                     </CardContent>
                 </Card>
             </div>
         </div>
-        
     );
 }

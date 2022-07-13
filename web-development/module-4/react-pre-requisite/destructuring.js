@@ -9,7 +9,7 @@ let [str1, str2, str3, str4] = arr;
 // console.log(str1, str2, str3, str4);
 
 let [str1_, str2_, ,str3_] = arr;                                                                                   // when we need to skip a value in between
-// console.log(str1_, str2_, str3_);                                                                                       
+console.log(str1_, str2_, str3_);                                                                                       
 
 let [str_1, str_2, str_3, str_4, extra] = arr;                                                                      // arr has only 4 elements in it so when we destructure it in 5 variable i.e. one extra var then?
 // console.log(str_1, str_2, str_3, str_4, extra);                     

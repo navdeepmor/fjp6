@@ -13,7 +13,6 @@ function Ue2() {
         <div>
             <h1> Current count : { count } </h1>
             <button onClick = { () => setCount(count + 1) } > + 1 </button>
-
         </div>
     )
 }

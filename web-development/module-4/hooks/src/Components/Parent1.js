@@ -5,7 +5,7 @@ import context from './Context'
 
 export default function Parent1() {
     const theme = useContext(context);
-    console.log("Parent1 called");
+    // console.log("Parent1 called");
     return (
         <div className = { theme ? 'dark' : 'light' } >                                                             {/* Rule 1:  whenever parent re-render then it's child also re-render. Because of which child1 would re-render always along with parent1 be re-render */}
             Parent1

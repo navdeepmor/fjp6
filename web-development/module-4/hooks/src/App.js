@@ -12,7 +12,7 @@ import Parent1 from './Components/Parent1'
 import Parent2 from './Components/Parent2'
 
 function App() {
-
+  
   const [theme, setTheme] = useState(false);
 
   return (

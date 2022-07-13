@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { auth } from '../firebase';
-
+ 
 export const AuthContext = React.createContext();
 export function AuthProvider({children}) {
     const [user, setUser] = useState();
@@ -49,5 +49,5 @@ export function AuthProvider({children}) {
            
     <Comp>   <Comp/>
            | 
-      props children    
+      props.children    
 */         

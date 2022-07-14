@@ -70,6 +70,20 @@ upload.addEventListener("click", (e) => {
     })
 })
 
+stickyNote.addEventListener("click", (e) => {
+    let stickyTemplateHTML = `
+        <div class="header-cont">
+            <div class="minimize"></div>
+            <div class="remove"></div>
+        </div>
+        <div class="note-cont">
+            <textarea spellcheck="false"></textarea>
+        </div>
+    `;
+    createSticky(stickyTemplateHTML);
+})
+
+
 function createSticky(stickyTemplateHTML) {
     let stickyCont = document.createElement("div");
     stickyCont.setAttribute("class", "sticky-cont");
@@ -87,19 +101,6 @@ function createSticky(stickyTemplateHTML) {
         return false;
     };
 }
-
-stickyNote.addEventListener("click", (e) => {
-    let stickyTemplateHTML = `
-        <div class="header-cont">
-            <div class="minimize"></div>
-            <div class="remove"></div>
-        </div>
-        <div class="note-cont">
-            <textarea></textarea>
-        </div>
-    `;
-    createSticky(stickyTemplateHTML);
-})
 
 function noteActions(minimize, remove, stickyCont) {
     remove.addEventListener("click", (e) => {

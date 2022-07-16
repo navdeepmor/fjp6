@@ -93,7 +93,7 @@ function beginPath(strokeObj) {
 }
 
 function drawStroke(strokeObj) {
-    tool.strokeStyele = strokeObj.color;
+    tool.strokeStyle = strokeObj.color;
     tool.lineWidth = strokeObj.width;
     tool.lineTo(strokeObj.x, strokeObj.y);
     tool.stroke();

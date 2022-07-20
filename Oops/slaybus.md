@@ -6,7 +6,7 @@
     DB
     Queues
     Load Balancer
-    Vertical
+    Vertical & Horizontal scaling
 
 # Oops
 
@@ -29,6 +29,7 @@
         Parsing - Non-dynamic Class creator Defaults
         Default ctor - Dynamic Class creator Defaults
         Parametrized ctor - Class user Defaults
+    -------------------------------------------------   
     super and override, ctor chaining
     access modifiers - private, public, default, protected
     inheritance and static fns

@@ -1,7 +1,54 @@
+import {useState} from 'react'
+import {createUserWithEmailAndPassword} from 'firebase/auth'
+import {auth, db} from '../firebase';
+import {useEffect} from 'react';
+import {addDoc, collection, doc} from 'firebase/firestore';
+
 function Signup() {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [name, setName] = useState('');
+    const [user, setUser] = useState(null);
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
+
+    const handleSignUp = async () => {
+        try {
+            setLoading(true);
+            let userCred = await createUserWithEmailAndPassword(auth, email, password);
+            let docRef = await addDoc(collection(db, 'users'), {
+                email,                                                                                               // writting email here is same as writting email: email
+                password,
+                name,
+                reelsId: [],
+                profileImgUrl: '',
+                userId: userCred.user.uid
+            })
+            console.log(docRef);
+            setUser(userCred.user);
+        } catch(err) {
+            setError(err);
+            setTimeout(() => {
+                setError('');
+            }, 2000);
+        }   
+        setLoading(false);
+    }
+
     return (
         <>
-            <h1>This is Signup page</h1>
+            {
+                error != '' ? <h1> {error.message} </h1> :
+                    loading ? <h1> Loading ... </h1> :
+                        user != null ? <><h1> Welcome </h1> <h4> {user.uid} </h4></>  :
+                        <>
+                            <input type='email' value={email} onChange={(e) => setEmail(e.target.value)} placeholder='Email' /> <br />
+                            <input type='password' value={password} onChange={(e) => setPassword(e.target.value)} placeholder='password' /> <br />
+                            <input type='text' value={name} onChange={(e) => setName(e.target.value)} placeholder='Name' /> <br /> <br />
+                            <button type='click' onClick={handleSignUp}> Sign Up </button>  
+                        </>
+            }
+            
         </>
     )
 }

@@ -9,6 +9,7 @@ let stickyNote = document.querySelector(".sticky-note");
 let upload = document.querySelector(".upload");
 let pencilFlag = false;
 let eraserFlag = false;
+let optionImg = document.querySelector(".option-img");
 
 
 optionsCont.addEventListener("click", (e) => {
@@ -19,10 +20,11 @@ optionsCont.addEventListener("click", (e) => {
 });
 
 function openTools() {
-    let iconElem = optionsCont.children[0];
-    iconElem.classList.remove("fa-times");
-    iconElem.classList.add("fa-bars");
+    // let iconElem = optionsCont.children[0];
+    // iconElem.classList.remove("fa-times");
+    // iconElem.classList.add("fa-bars");
     toolsCont.style.display = "flex";
+    optionImg.src = "./icons/cancel-1.png";
 }
 function closeTools() {
     let iconElem = optionsCont.children[0];
@@ -31,6 +33,8 @@ function closeTools() {
     eraserToolCont.style.display = "none";
     pencilToolCont.style.display = "none";
     toolsCont.style.display = "none";
+    optionImg.src = "./icons/option-box-1.png";
+    // console.log(optionImg.src);
 }
 
 pencil.addEventListener("click", (e) => {

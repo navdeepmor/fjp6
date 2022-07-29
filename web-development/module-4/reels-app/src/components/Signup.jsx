@@ -1,8 +1,8 @@
 import {useState} from 'react'
 import {createUserWithEmailAndPassword} from 'firebase/auth'
 import {auth, db} from '../firebase';
-import {useEffect} from 'react';
-import {addDoc, collection, doc} from 'firebase/firestore';
+// import {useEffect} from 'react';
+import {setDoc, doc} from 'firebase/firestore';
 
 function Signup() {
     const [email, setEmail] = useState('');
@@ -15,17 +15,16 @@ function Signup() {
     const handleSignUp = async () => {
         try {
             setLoading(true);
-            let userCred = await createUserWithEmailAndPassword(auth, email, password);
-            let docRef = await addDoc(collection(db, 'users'), {
+            let resObj = await createUserWithEmailAndPassword(auth, email, password);
+            await setDoc(doc(db, 'users', resObj.user.uid), {
                 email,                                                                                               // writting email here is same as writting email: email
                 password,
                 name,
                 reelsId: [],
                 profileImgUrl: '',
-                userId: userCred.user.uid
+                userId: resObj.user.uid
             })
-            console.log(docRef);
-            setUser(userCred.user);
+            setUser(resObj.user);
         } catch(err) {
             setError(err);
             setTimeout(() => {
@@ -38,7 +37,7 @@ function Signup() {
     return (
         <>
             {
-                error != '' ? <h1> {error.message} </h1> :
+                error !== '' ? <h1> {error.message} </h1> :
                     loading ? <h1> Loading ... </h1> :
                         user != null ? <><h1> Welcome </h1> <h4> {user.uid} </h4></>  :
                         <>

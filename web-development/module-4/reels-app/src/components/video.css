@@ -1,0 +1,48 @@
+.video-cont {
+    height: 28rem;
+    width: 18rem;
+    margin: auto;
+    position: relative;
+    background-color: lightgreen;
+    border-radius: 0.5rem;
+}
+
+video {
+    height: 28m;
+    width: 18rem;
+    border-radius: 0.5rem
+}
+
+.user-details {
+    z-index: 1;
+    position: absolute;
+    left: 6rem;
+}
+
+.comment {
+    z-index: 1;
+    position: absolute;
+    top: 15rem;
+}
+
+.comment-btn-img {
+    height: 3rem;
+    width: 3rem;
+    background-color: lightseagreen;
+}
+
+.comment-cont {
+    height: 13rem;
+    width: 17rem;
+    background-color: lightcoral;
+    margin-left: 0.5rem;
+}
+
+.user {
+    font-weight: bold;
+}
+
+.post-btn-img {
+    height: 1.5rem;
+    width: 1.5rem;
+}

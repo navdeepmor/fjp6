@@ -1,7 +1,8 @@
 import {useState} from 'react';
-import {signInWithEmailAndPassword, signOut, onAuthStateChanged} from 'firebase/auth';
+import {signInWithEmailAndPassword, onAuthStateChanged} from 'firebase/auth';
 import {auth} from '../firebase';
-import { useEffect } from 'react';
+import {useEffect} from 'react';
+import Feeds from './Feeds';
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -9,13 +10,12 @@ function Login() {
     const [user, setUser] = useState(null);
     const [loginLoading, setloginLoading] = useState(false);
     const [error, setError] = useState('');
-    const [feedsLoading, setFeedsLoading] = useState(true);
 
     const handleLogin = async () => {
         try {
             setloginLoading(true);
-            let userCred = await signInWithEmailAndPassword(auth, email, password);
-            setUser(userCred.user);
+            let resObj = await signInWithEmailAndPassword(auth, email, password);
+            setUser(resObj.user);
             setEmail('');
             setPassword('');
         } catch(err) {
@@ -27,20 +27,6 @@ function Login() {
         setloginLoading(false);
     }
 
-    const handleLogOut = async () => {
-        try {
-            setloginLoading(true);
-            await signOut(auth);
-            setUser(null);
-        } catch (err) {
-            setError(err);
-            setTimeout(() => {
-                setError('');
-            }, 2000)
-        } 
-        setloginLoading(false);
-    }
-
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if(user) {
@@ -48,7 +34,6 @@ function Login() {
             } else {
                 setUser(null);
             } 
-            setFeedsLoading(false);
         })
     }, [])
 
@@ -56,8 +41,8 @@ function Login() {
         <> 
             {
                 error !== '' ? <h1> {error.message} </h1> : 
-                    loginLoading || feedsLoading ? <h1> Loading ... </h1> :
-                        user !== null ? <h1> User is {user.uid } <br /> <button type='click' onClick={handleLogOut}> Log out </button> </h1> :  
+                    loginLoading ? <h1> Loading ... </h1> :
+                        user !== null ? <Feeds/> :  
                         <>
                             <input type='email' placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} /> <br />
                             <input type='password' placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} /> <br /> <br />

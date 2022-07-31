@@ -1,17 +1,34 @@
 import { useState } from 'react';
+
+// import { useEffect } from 'react';
+import { db } from '../firebase';
+import { updateDoc, doc } from 'firebase/firestore';
 import './video.css';
 import commentImg from '../assets/comment-3.png';
 import postImg from '../assets/post-1.png';
 
-const Video = () => {
+const Video = ({ post }) => {
     const [playVideo, setPlayVideo] = useState(true);
     const [commentBoxOpen, setCommentBoxOpen] = useState(false);
+    // const [comment, setComment] = useState([]);
+    const [logInUserComment, setLogInUserComment] = useState('');
+
+    const handlePostComment = () => {
+        (async () => {
+            const docRef = doc(db, 'posts', post.userId);
+            await updateDoc(docRef, {
+                posts: {
+                    comments: logInUserComment
+                }
+            });
+        })();
+    }
 
     return (
         <>
             <div className="video-cont">
                 <div className="user-details">
-                    <p className="username"> Navdeep Mor </p>
+                    <p className="username"> {post.userId} </p>
                     {/* <marquee > video title </marquee> */}
                 </div>
 
@@ -22,7 +39,7 @@ const Video = () => {
                         } else {
                             setCommentBoxOpen(false);
                         }
-                    }}> <img className="comment-btn-img" src={commentImg} alt="comment btn img"/> </div>
+                    }}> <img className="comment-btn-img" src={commentImg} alt="comment btn img" /> </div>
                     {commentBoxOpen ?
                         <>
                             <div className="comment-cont">
@@ -32,24 +49,24 @@ const Video = () => {
                                 </div>
                                 <div className="comment-form">
                                     <div className="user login-user"> login user </div>
-                                    <input type="text" style={{border: 'none', outline: 'none'}}/>
-                                    <img className="post-btn-img" src={postImg} alt="post btn img" />
+                                    <input value={logInUserComment} onChange={(e) => setLogInUserComment(e.currentTarget.value)} type="text" style={{ border: 'none', outline: 'none' }} />
+                                    <img onClick={handlePostComment} className="post-btn-img" src={postImg} alt="post btn img" />
                                 </div>
                             </div>
                         </> :
                         ("")}
                 </div>
 
-                <video autoPlay="autoplay" muted onClick={(e) => { 
-                    if(playVideo) { 
+                <video autoPlay="autoplay" muted onClick={(e) => {
+                    if (playVideo) {
                         e.currentTarget.pause();
-                        setPlayVideo(false); 
-                    } else { 
+                        setPlayVideo(false);
+                    } else {
                         e.currentTarget.play();
                         setPlayVideo(true);
-                    } 
-                }} > 
-                    <source src="https://firebasestorage.googleapis.com/v0/b/reels-app-adb0a.appspot.com/o/posts%2Freels-video-2.mp4?alt=media&token=5e40007f-95ee-4fdf-bb74-e0c8c56c1ea1" type='video/mp4'/> 
+                    }
+                }} >
+                    <source src={post.reelUrl} type='video/mp4' />
                 </video>
             </div>
         </>

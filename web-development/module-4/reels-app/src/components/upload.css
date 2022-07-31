@@ -1,0 +1,12 @@
+.upload-img {
+    height: 3rem;
+    width: 3rem;
+    background-color: lightgoldenrodyellow;
+}
+
+.upload-img:hover {
+    height: 2.75rem;
+    width: 2.75rem;
+    background-color: lightgray;
+    border-radius: 50%;
+}

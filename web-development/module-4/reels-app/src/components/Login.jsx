@@ -14,8 +14,8 @@ function Login() {
     const handleLogin = async () => {
         try {
             setloginLoading(true);
-            let resObj = await signInWithEmailAndPassword(auth, email, password);
-            setUser(resObj.user);
+            await signInWithEmailAndPassword(auth, email, password);
+            // setUser(resObj.user);
             setEmail('');
             setPassword('');
         } catch(err) {
@@ -31,6 +31,7 @@ function Login() {
         onAuthStateChanged(auth, (user) => {
             if(user) {
                 setUser(user);
+                
             } else {
                 setUser(null);
             } 
@@ -41,7 +42,7 @@ function Login() {
         <> 
             {
                 error !== '' ? <h1> {error.message} </h1> : 
-                    loginLoading ? <h1> Loading ... </h1> :
+                    loginLoading ? <h1 style={{textAlign: 'center'}}> Loading ... </h1> :
                         user !== null ? <Feeds/> :  
                         <>
                             <input type='email' placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} /> <br />
